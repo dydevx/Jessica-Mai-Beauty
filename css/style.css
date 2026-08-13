@@ -737,3 +737,72 @@ body{background:#fff;color:#0b0b0b;font-family:var(--sans);font-size:16px;line-h
   .footer-top nav a:hover{transform:none}
   .footer-bottom{padding-top:20px}
 }
+
+/* Brand signature: preserve the logo's wide calligraphic proportions and give it presence. */
+.site-header .brand{
+  width:210px;
+  height:76px;
+  padding:8px 0 11px;
+  background:transparent;
+  border-bottom:2px solid var(--reference-orange);
+}
+.site-header .brand img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  filter:drop-shadow(0 2px 5px rgba(243,160,82,.2));
+}
+.hero-brand{
+  width:390px;
+  gap:32px;
+}
+.brand-medallion{
+  position:relative;
+  width:390px;
+  height:190px;
+  padding:26px 28px;
+  border:1px solid rgba(243,160,82,.72);
+  border-radius:14px;
+  background:radial-gradient(circle at 50% 40%,#201818 0,#080707 68%);
+  overflow:visible;
+}
+.brand-medallion::before,
+.brand-medallion::after{
+  content:'';
+  position:absolute;
+  top:50%;
+  width:42px;
+  height:1px;
+  background:var(--reference-orange);
+}
+.brand-medallion::before{right:100%}
+.brand-medallion::after{left:100%}
+.brand-medallion img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  filter:brightness(1.14) saturate(1.18) drop-shadow(0 3px 8px rgba(243,160,82,.2));
+}
+.hero-brand .hero-book{min-width:270px}
+
+@media(min-width:1101px){
+  .hero-brand{left:57%;top:25%;width:390px}
+}
+@media(min-width:781px) and (max-width:1100px){
+  .site-header .brand{width:175px}
+  .hero-brand{left:58%;top:27%;width:310px}
+  .brand-medallion{width:310px;height:158px;padding:22px}
+  .brand-medallion::before,.brand-medallion::after{width:28px}
+}
+@media(max-width:780px){
+  .site-header .brand{width:170px;height:58px;padding:6px 0 8px}
+  .hero-brand{width:270px;gap:14px;bottom:22px}
+  .brand-medallion{width:270px;height:126px;padding:18px 20px;border-radius:12px}
+  .brand-medallion::before,.brand-medallion::after{width:20px}
+  .hero-brand .hero-book{min-width:230px}
+}
+@media(max-width:420px){
+  .site-header .brand{width:155px}
+  .hero-brand{width:250px}
+  .brand-medallion{width:250px;height:116px;padding:16px 18px}
+}
