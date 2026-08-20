@@ -777,7 +777,7 @@ body{background:#fff;color:#0b0b0b;font-family:var(--sans);font-size:16px;line-h
   letter-spacing:.12em;
   white-space:nowrap;
 }
-.site-header .logo-tagline{bottom:5px;font-size:9px}
+.site-header .logo-tagline{display:none}
 .brand-medallion .logo-tagline{bottom:23px;font-size:17px}
 .footer-logo .logo-tagline{bottom:12px;font-size:13px}
 .brand-medallion img{
@@ -810,4 +810,214 @@ body{background:#fff;color:#0b0b0b;font-family:var(--sans);font-size:16px;line-h
   .hero-brand{width:250px}
   .brand-medallion{width:250px;height:116px;padding:16px 18px}
   .brand-medallion .logo-tagline{bottom:11px;font-size:11px}
+}
+
+/* 2026 brand refresh — modernized around the original site's dusty rose palette. */
+:root{
+  --ivory:#fbf9f9;
+  --ink:#2d2620;
+  --muted:#625955;
+  --line:#dfd4d2;
+  --soft:#f4eeee;
+  --champagne:#cf8b80;
+  --reference-orange:#cf8b80;
+  --brand-rose:#cf8b80;
+  --brand-rose-deep:#935a52;
+  --brand-blush:#eedcd9;
+}
+
+body{background:var(--ivory);color:var(--ink)}
+::selection{background:var(--brand-rose);color:var(--ink)}
+:focus-visible{outline:3px solid var(--brand-rose);outline-offset:4px}
+
+.site-header,.site-header.scrolled{
+  height:86px;
+  grid-template-columns:210px 1fr auto;
+  border-top:4px solid var(--brand-rose);
+  background:rgba(20,17,16,.96);
+}
+.site-header .brand{height:66px;border-bottom-color:rgba(207,139,128,.82)}
+.desktop-nav{height:64px;gap:clamp(22px,3vw,48px);border-bottom-color:rgba(255,255,255,.34);font-size:15px;font-weight:500}
+.nav-book,.hero-book{
+  min-width:auto;
+  border:0;
+  border-radius:6px;
+  background:var(--brand-rose);
+  color:var(--ink);
+  transition:background .25s ease,color .25s ease,transform .25s cubic-bezier(.22,1,.36,1);
+}
+.nav-book{padding:11px 22px;font-size:15px}
+.nav-book:hover,.hero-book:hover{background:var(--brand-rose-deep);color:#fff;transform:translateY(-2px)}
+
+.hero{height:720px;margin-top:86px}
+.hero-stage{background:radial-gradient(circle at 54% 43%,#382c2c 0,#1d1818 43%,#0c0a0a 100%)}
+.hero-stage:after{content:'';position:absolute;inset:0;background:linear-gradient(110deg,rgba(207,139,128,.09),transparent 34%,rgba(207,139,128,.04) 70%,transparent);pointer-events:none}
+.hero-portrait{border-color:rgba(207,139,128,.7);border-radius:20px}
+.brand-medallion{border-color:rgba(207,139,128,.7);background:radial-gradient(circle at 50% 38%,#2d2020 0,#090707 70%)}
+.logo-tagline{color:var(--brand-rose)}
+.brand-medallion img{filter:brightness(1.08) saturate(1.08) drop-shadow(0 3px 8px rgba(207,139,128,.2))}
+.hero-book{font-size:20px;padding:13px 30px}
+
+.about{background:var(--ivory)}
+.image-note{background:var(--brand-blush);color:var(--ink)}
+.about-slide-arrow{background:rgba(45,38,32,.9)}
+.about-thumbs button:hover,.about-thumbs button.active{border-color:var(--brand-rose)}
+.promises li:before{color:var(--brand-rose-deep)}
+
+.services{background:var(--brand-blush)}
+.services .service-card{background:#171313}
+.service-copy a{background:var(--brand-rose);color:var(--ink);border-radius:4px}
+.service-copy a:hover{background:#fff;color:var(--ink)}
+
+.pricing{background:#211b1a}
+.pricing::before{background:radial-gradient(circle at 72% 28%,rgba(207,139,128,.12),transparent 34%),linear-gradient(115deg,rgba(255,255,255,.025),transparent 30%,rgba(207,139,128,.05) 31% 44%,transparent 45%)}
+.pricing .price-items strong,.pricing .price-columns strong{color:#e5a79d}
+.pricing .discount{background:var(--brand-rose);color:var(--ink)}
+
+.gallery{background:#fff}
+.gallery-filters button.active{border-color:var(--brand-rose-deep);color:var(--brand-rose-deep)}
+.banner-overlay{background:rgba(39,25,24,.6)}
+.hours-list>div.today{background:var(--brand-blush)}
+.today:after{color:var(--brand-rose-deep)}
+
+.contact.section{background:#171312}
+.contact-info h3,.contact-info dt{color:#e5a79d}
+.contact-actions a{background:var(--brand-rose);color:var(--ink)}
+.contact-actions a:hover{background:#fff}
+.contact-form{background:var(--ivory)}
+.contact-form .button:hover{background:var(--brand-rose);color:var(--ink)}
+.field input:focus,.field textarea:focus{border-color:var(--brand-rose-deep);box-shadow:0 2px 0 -1px var(--brand-rose-deep)}
+
+.footer{background:#0d0a0a}
+.footer-logo{border-bottom-color:rgba(207,139,128,.72)}
+.footer-top>p a:hover,.footer-top nav a:hover,.footer-bottom strong{color:#e5a79d}
+
+@media(max-width:780px){
+  .site-header,.site-header.scrolled{height:72px;grid-template-columns:1fr auto;border-top-width:4px}
+  .mobile-nav{inset:72px 0 auto;background:#171312}
+  .mobile-nav .mobile-book{background:var(--brand-rose);color:var(--ink)}
+  .hero{height:700px;margin-top:72px}
+  .hero-portrait{border-radius:18px}
+  .services{background:var(--brand-blush)}
+}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+}
+
+/* Subtle modern polish — intentionally preserves the existing composition. */
+body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+h1,h2,h3{letter-spacing:-.025em;text-wrap:balance}
+p{letter-spacing:.002em;text-wrap:pretty}
+
+.site-header{transition:background-color .25s ease,border-color .25s ease}
+.desktop-nav a{padding-block:8px;transition:color .2s ease}
+.desktop-nav a:after{background:var(--brand-rose);height:2px;bottom:-7px}
+.desktop-nav a:hover{color:#e5a79d}
+.nav-book,.hero-book{font-weight:700;box-shadow:0 4px 8px rgba(0,0,0,.16)}
+.nav-book:active,.hero-book:active{transform:translateY(0) scale(.98)}
+
+.hero-portrait,.brand-medallion{transition:border-color .3s ease,filter .3s ease}
+.hero-portrait img{transition:transform .7s cubic-bezier(.22,1,.36,1)}
+.hero:hover .hero-portrait img{transform:scale(1.015)}
+.hero-book{letter-spacing:-.01em}
+
+.about-slide-stage,.service-card,.gallery-item,.pricing-visual,.contact-form{border-radius:10px}
+.about-slide-stage,.gallery-item,.pricing-visual{overflow:hidden}
+.about-slide-arrow{transition:background-color .2s ease,transform .2s ease}
+.about-slide-arrow:hover{background:var(--brand-rose-deep);color:#fff;transform:scale(1.04)}
+.about-thumbs button{border-radius:6px;transition:opacity .2s ease,border-color .2s ease,transform .2s ease}
+.about-thumbs button:hover{transform:translateY(-2px)}
+
+.services .service-card{transition:transform .32s cubic-bezier(.22,1,.36,1),background-color .25s ease}
+.services .service-card:hover{transform:translateY(-5px);background:#211a19}
+.service-copy h3{letter-spacing:-.02em}
+.service-copy a{min-height:40px;display:inline-flex;align-items:center;justify-content:center;transition:background-color .2s ease,color .2s ease,transform .2s ease}
+.service-copy a:hover{transform:translateY(-2px)}
+
+.pricing .accordions summary{transition:color .2s ease}
+.pricing .accordions summary:hover{color:#e5a79d}
+.pricing .price-items p,.pricing .price-columns p{transition:background-color .2s ease}
+.pricing .price-items p:hover,.pricing .price-columns p:hover{background:rgba(207,139,128,.07)}
+.pricing .discount{border-radius:8px}
+
+.gallery-filters button{min-height:40px;transition:color .2s ease,border-color .2s ease}
+.gallery-filters button:hover{color:var(--brand-rose-deep)}
+.gallery-item img{transition:transform .5s cubic-bezier(.22,1,.36,1),filter .3s ease}
+.gallery-item:hover img{filter:saturate(1.06);transform:scale(1.035)}
+.booking-banner{border-radius:10px}
+.booking-banner .button{border-radius:6px}
+
+.hours-list>div{transition:background-color .2s ease}
+.hours-list>div:not(.today):hover{background:#f3ebea}
+.hours-list>div.today{border-radius:6px}
+
+.contact-actions a,.contact-form .button{border-radius:6px;transition:background-color .2s ease,color .2s ease,transform .2s ease}
+.contact-actions a:hover,.contact-form .button:hover{transform:translateY(-2px)}
+.field input,.field textarea{transition:border-color .2s ease,box-shadow .2s ease}
+.field input:hover,.field textarea:hover{border-color:#6f625d}
+.footer-top nav a{transition:color .2s ease,transform .2s ease}
+
+@media(max-width:780px){
+  .booking-banner{border-radius:0}
+  .desktop-nav a{padding-block:0}
+  .services .service-card:hover,.contact-actions a:hover,.contact-form .button:hover{transform:none}
+}
+
+/* Contemporary styling layer — palette and layout remain unchanged. */
+body,button,input,textarea{font-family:'Manrope',Arial,sans-serif}
+h1,h2,h3,.section h2,.booking-banner h2,.service-copy h3,.contact-form h3{
+  font-family:'Prata',Georgia,serif!important;
+  font-weight:400!important;
+  letter-spacing:-.025em;
+}
+.section-heading h2,.pricing-intro h2,.gallery-heading h2,.hours-title h2,.contact-info h2{
+  text-transform:none;
+}
+.section-heading h2,.pricing-intro h2{font-size:clamp(42px,4.7vw,64px)}
+.about-copy .lead{font-family:'Prata',Georgia,serif;font-weight:400;line-height:1.5}
+
+.desktop-nav{font-family:'Manrope',Arial,sans-serif;font-weight:600;letter-spacing:-.01em}
+.desktop-nav a{text-transform:none}
+.desktop-nav a:first-child{text-transform:none}
+.nav-book,.hero-book,.button,.service-copy a,.contact-actions a{
+  font-family:'Manrope',Arial,sans-serif;
+  text-transform:none;
+  letter-spacing:-.01em;
+}
+.nav-book,.hero-book{border-radius:4px}
+.button,.service-copy a,.contact-actions a{border-radius:4px}
+
+.section-heading p,.pricing-intro>p,.hours-title p:last-child{font-size:15px;line-height:1.75}
+.about-copy>p:not(.lead){line-height:1.8}
+.promises li{font-family:'Manrope',Arial,sans-serif;letter-spacing:.04em;text-transform:none}
+
+.services .service-card{border-radius:8px;isolation:isolate}
+.services .service-card>.service-image{filter:saturate(.92) contrast(1.02)}
+.services .service-card:hover>.service-image{filter:saturate(1.04) contrast(1.02)}
+.service-copy h3{font-size:clamp(25px,2vw,31px)}
+.service-copy p{line-height:1.65}
+
+.pricing .accordions summary{font-family:'Manrope',Arial,sans-serif;font-weight:600;letter-spacing:-.015em}
+.pricing .price-columns h3{font-family:'Manrope',Arial,sans-serif;letter-spacing:.01em}
+.pricing .price-items strong,.pricing .price-columns strong{font-variant-numeric:tabular-nums}
+.pricing .discount strong{font-family:'Prata',Georgia,serif;font-weight:400}
+
+.gallery-filters button{font-family:'Manrope',Arial,sans-serif;letter-spacing:0;text-transform:none;font-size:12px;font-weight:600}
+.gallery-item{border-radius:8px}
+.booking-banner h2{letter-spacing:-.035em}
+.hours-list span,.hours-list strong{font-size:13px}
+.hours-list strong{font-variant-numeric:tabular-nums}
+
+.contact-info h3{font-family:'Prata',Georgia,serif!important;font-weight:400!important}
+.contact-info dt,.field label{letter-spacing:.04em;text-transform:none;font-size:11px}
+.field input,.field textarea{font-size:15px}
+.contact-form{border-radius:8px}
+.footer-top nav,.footer-top p,.footer-bottom{font-family:'Manrope',Arial,sans-serif}
+
+@media(max-width:780px){
+  .mobile-nav a{font-family:'Prata',Georgia,serif;font-size:24px}
+  .mobile-nav .mobile-book{font-family:'Manrope',Arial,sans-serif;font-size:13px}
+  .section-heading h2,.pricing-intro h2,.gallery-heading h2,.hours-title h2,.contact-info h2{font-size:38px}
 }
