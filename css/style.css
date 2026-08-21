@@ -1021,3 +1021,91 @@ h1,h2,h3,.section h2,.booking-banner h2,.service-copy h3,.contact-form h3{
   .mobile-nav .mobile-book{font-family:'Manrope',Arial,sans-serif;font-size:13px}
   .section-heading h2,.pricing-intro h2,.gallery-heading h2,.hours-title h2,.contact-info h2{font-size:38px}
 }
+
+/* Motion refresh: choreography and feedback without changing composition. */
+:root{
+  --ease-out-quart:cubic-bezier(.25,1,.5,1);
+  --ease-out-quint:cubic-bezier(.22,1,.36,1);
+  --ease-out-expo:cubic-bezier(.16,1,.3,1);
+}
+
+.hero-stage{isolation:isolate}
+.hero-stage:after{
+  z-index:0;
+  background:
+    radial-gradient(circle at 67% 35%,rgba(207,139,128,.2),transparent 28%),
+    linear-gradient(110deg,rgba(207,139,128,.1),transparent 34%,rgba(207,139,128,.05) 70%,transparent);
+  animation:heroLight 7s ease-in-out infinite alternate;
+}
+.hero-portrait,.hero-brand{z-index:2}
+.hero-portrait{animation:portraitReveal .9s .08s var(--ease-out-expo) both}
+.hero-portrait img{animation:portraitFocus 1.15s .08s var(--ease-out-quint) both}
+.brand-medallion{animation:brandReveal .8s .32s var(--ease-out-expo) both}
+.hero-brand .hero-book{animation:ctaReveal .65s .52s var(--ease-out-quint) both}
+
+@keyframes portraitReveal{
+  from{opacity:0;clip-path:inset(7% 7% 7% 7% round 20px);transform:translateY(22px)}
+  to{opacity:1;clip-path:inset(0 round 20px);transform:translateY(0)}
+}
+@keyframes portraitFocus{from{transform:scale(1.07);filter:saturate(.72)}to{transform:scale(1);filter:saturate(1)}}
+@keyframes brandReveal{from{opacity:0;transform:translateY(18px);filter:blur(8px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
+@keyframes ctaReveal{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes heroLight{from{opacity:.7;transform:translate3d(-1%,0,0)}to{opacity:1;transform:translate3d(1%,0,0)}}
+
+/* Content remains visible without JS. JS only primes elements that are off-screen. */
+.reveal.motion-ready{opacity:0;transform:translateY(24px);filter:blur(5px)}
+.reveal.motion-ready.visible{
+  opacity:1;
+  transform:translateY(0);
+  filter:blur(0);
+  transition:opacity .7s var(--ease-out-quart),transform .75s var(--ease-out-expo),filter .65s var(--ease-out-quart);
+}
+.service-grid .reveal.motion-ready.visible:nth-child(2){transition-delay:70ms}
+.service-grid .reveal.motion-ready.visible:nth-child(3){transition-delay:140ms}
+.service-grid .reveal.motion-ready.visible:nth-child(4){transition-delay:70ms}
+.service-grid .reveal.motion-ready.visible:nth-child(5){transition-delay:140ms}
+
+.site-header{backdrop-filter:saturate(130%) blur(10px);-webkit-backdrop-filter:saturate(130%) blur(10px)}
+.desktop-nav a:after{transform-origin:left;transition:transform .28s var(--ease-out-quart);right:0;transform:scaleX(0)}
+.desktop-nav a:hover:after,.desktop-nav a:focus-visible:after{transform:scaleX(1)}
+.menu-toggle span{transition:transform .28s var(--ease-out-quint),opacity .18s ease}
+.menu-toggle[aria-expanded="true"] span:first-child{transform:translateY(4px) rotate(45deg)}
+.menu-toggle[aria-expanded="true"] span:last-child{transform:translateY(-4px) rotate(-45deg)}
+
+.mobile-nav{transform-origin:top;transition:opacity .25s ease,transform .35s var(--ease-out-expo),visibility .25s}
+.mobile-nav.open{transform:none}
+.mobile-nav.open a{animation:menuItemIn .42s var(--ease-out-quint) both}
+.mobile-nav.open a:nth-child(2){animation-delay:40ms}.mobile-nav.open a:nth-child(3){animation-delay:80ms}
+.mobile-nav.open a:nth-child(4){animation-delay:120ms}.mobile-nav.open a:nth-child(5){animation-delay:160ms}
+@keyframes menuItemIn{from{opacity:0;transform:translateX(-12px)}to{opacity:1;transform:translateX(0)}}
+
+details{transition:background-color .25s ease}
+details[open]{background:rgba(207,139,128,.055)}
+summary i{transition:transform .3s var(--ease-out-quint)}
+details[open] summary i{transform:rotate(90deg)}
+.gallery-item::after{background:linear-gradient(180deg,transparent 54%,rgba(23,15,15,.36));transition:opacity .3s ease}
+.gallery-item:active img{transform:scale(1.01)}
+.lightbox{opacity:0;transform:scale(.975);transition:opacity .22s ease,transform .3s var(--ease-out-quint),overlay .25s allow-discrete,display .25s allow-discrete}
+.lightbox[open]{opacity:1;transform:scale(1)}
+@starting-style{.lightbox[open]{opacity:0;transform:scale(.975)}}
+.lightbox::backdrop{background:rgba(8,5,5,.82);backdrop-filter:blur(5px);opacity:0;transition:opacity .25s ease,overlay .25s allow-discrete,display .25s allow-discrete}
+.lightbox[open]::backdrop{opacity:1}
+@starting-style{.lightbox[open]::backdrop{opacity:0}}
+
+@media(max-width:780px){
+  .site-header{backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+  .hero-stage:after{animation-duration:9s}
+  .hero-portrait{animation-name:portraitRevealMobile}
+  .reveal.motion-ready{transform:translateY(16px);filter:blur(3px)}
+}
+
+@keyframes portraitRevealMobile{
+  from{opacity:0;clip-path:inset(7% 7% 7% 7% round 18px);transform:translate(-50%,22px)}
+  to{opacity:1;clip-path:inset(0 round 18px);transform:translate(-50%,0)}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .hero-stage:after,.hero-portrait,.hero-portrait img,.brand-medallion,.hero-brand .hero-book,.mobile-nav.open a{animation:none!important}
+  .reveal.motion-ready,.reveal.motion-ready.visible{opacity:1;transform:none;filter:none;transition:none}
+  .lightbox,.lightbox::backdrop{transition:none}
+}
